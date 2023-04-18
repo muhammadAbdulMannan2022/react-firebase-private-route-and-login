@@ -11,7 +11,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 const auth = getAuth(app);
 
 const Register = () => {
-  const user = useContext(AuthContext);
+  // const { setLoginUserInfo } = useContext(AuthContext);
   // submit handeler
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +21,7 @@ const Register = () => {
       .then((res) => {
         // console.log(res.user, name.value);
         updateUserData(res.user, name.value);
+        // setLoginUserInfo(res.user);
         e.target.reset();
       })
       .catch((err) => {

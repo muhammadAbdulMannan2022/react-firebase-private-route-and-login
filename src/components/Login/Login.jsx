@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   getAuth,
@@ -6,9 +6,11 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import app from "../../firebase/firebase.config";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const auth = getAuth(app);
 const Login = () => {
+  // const { setLoginUserInfo } = useContext(AuthContext);
   const emailRef = useRef();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +19,7 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email.value, password.value)
       .then((res) => {
         console.log(res.user);
+        // setLoginUserInfo(res.user);
         e.target.reset();
       })
       .catch((err) => {

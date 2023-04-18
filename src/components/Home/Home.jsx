@@ -5,7 +5,9 @@ const Home = () => {
   const { user } = useContext(AuthContext);
   return (
     <div>
-      <p>{user ? user.displayName : "not found"}</p>
+      <p>name : {user ? user.displayName : "not found"}</p>
+      <p>email : {user ? user.email : "email not found"}</p>
+      {console.log(user)}
     </div>
   );
 };
